@@ -1,7 +1,7 @@
 # django自带的服务器性能有点低，uwsgi
-1. ### 安装  - 有nginx模块，和nginx无缝对接
+### 1.安装  - 有nginx模块，和nginx无缝对接
     - pip install uwsgi
-2. ### 配置uwsgi.ini
+### 2.配置uwsgi.ini
 	```
       [uwsgi]
       # 使用nginx连接时，使用
@@ -20,7 +20,7 @@
       pidfile=uwsgi.pid
       daemonize=uwsgi.log
     ```
-3. ### 修改nginx对接
+### 3.修改nginx对接
 	  ```
       vim /etc/nginx/conf.d/default.conf
       server {
@@ -36,7 +36,7 @@
 	  ```
     加载`nginx nginx -s reload`
     启动 `uwsgi --ini uwsgi.ini(Tpp中)` 
-4 ### linux直接启
+### 4.linux直接启
   * ssh root:Root123@服务器公网IP
   * free -h
   * ps -ef|grep uwsgi
