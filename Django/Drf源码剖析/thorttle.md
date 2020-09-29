@@ -1,0 +1,70 @@
+### throttling
+
+- BaseThrottle
+  - 方法
+    - allow_request
+      - 抽象方法
+    - get_ident
+      - 获取客户端标识
+        - 真实IP
+        - 远端IP
+    - wait
+- SimpleRateThrottle
+  - 继承
+    - BaseThrottle
+  - 属性
+    - THROTTLE_RATES
+    - cache
+    - cache_format
+    - duration
+    - history
+    - key
+    - now
+    - num_requests
+    - rate
+    - scope
+    - timer
+  - 方法
+    - get_cache_key
+    - get_rate
+      - 获取rate
+    - parse_rate
+      - 解析rate
+        - num/duration
+        - 时间段
+          - s
+          - m
+          - h
+          - d
+    - allow_request
+      - 入口
+    - throttle_success
+    - throttle_failure
+    - wait
+- AnnoRateThrottle
+  - 继承
+    - SimpleRateThrottle
+  - 属性
+    - scope
+  - 方法
+    - get_cache_key
+- UserRateThrottle
+  - 继承
+    - SimpleRateThrottle
+  - 属性
+    - scope
+  - 方法
+    - get_cache_key
+- ScopedRateThrottle
+  - 继承
+    - SimpleRateThrottle
+  - 属性
+    - duration
+    - num_requests
+    - rate
+    - scope
+    - scope_attr
+  - 方法
+    - allow_request
+    - get_cache_key
+

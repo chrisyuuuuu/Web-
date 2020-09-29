@@ -1,0 +1,78 @@
+### ListView
+
+- 自己没写代码
+- 继承父类
+  - MultiObjectTemplateResponseMixin
+    - 继承 TemplateResponseMixin
+    - 重写 get_template_names
+      - 调用父类中的获取
+        - 获取到了直接使用
+        - 没获取到捕获
+          - 赋值[]
+      - object_list 存在 model属性
+        - 将names中添加了一个值
+          - {{app_label}}/{{model_name}}_list
+    - 属性template_name_suffix
+  - BaseListView
+    - 书写了 get
+      - 获取查询结果集
+        - get_queryset
+      - 判定是否允许为空
+        - exists
+        - len == 0
+      - 获取数据
+        - get_context_data
+      - 渲染数据
+        - render_to_response
+    - 继承父类
+      - View
+      - MultiObjectMixin
+        - 继承ContextMixin
+        - 属性
+          - allow_empty
+          - queryset
+          - model
+          - paginate_by
+          - paginate_orphans
+          - context_object_name
+          - paginator_class
+          - page_kwargs
+          - ordering
+        - 方法
+          - get_queryset
+            - queryset
+              - queryset直接传递
+              - 通过model查询出来的
+            - get_ordering
+              - 不需要进行排序，queryset到此结束
+              - 需要排序
+                - 根据排序字段进行排序
+          - get_ordering
+          - paginate_queryset
+          - get_paginate_by
+          - get_paginator
+          - get_paginate_orphans
+          - get_allow_empty
+          - get_context_object_name
+          - get_context_data
+            - 重写了
+            - 从关键字参数中获取
+              - 有就直接拿
+              - 没有使用self.object_list
+              - get_paginate_by
+              - get_context_object_name
+              - 判断是否分页
+                - 有
+                  - paginate_queryset
+                    - get_paginator
+                      - 进行分页
+                    - 获取页码
+                    - Paginator.page(page_number)
+                  - 返回
+                    - paginator
+                    - page_obj
+                    - is_paginated
+                    - object_list
+                - 没有
+                  - object_list 是数据 query_set
+
