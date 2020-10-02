@@ -1,0 +1,11 @@
+redis
+https://git.coding.net/landmark/bj_python1812.git
+特点：适用于超大量的数据和高订单（双十一）
+          是一个内存数据库，只保存了键值队，没有表之间的关联，查询效率变高，读写速度快，适合做缓存，不适合做大规模数据的存储，适合临时的保存数据
+什么是redis?
+           Remote Dictionary Server 缩写 是个基于内存的网络存储系统
+          丰富的数据结构(sets, sorted sets,hashes, list ...)
+          本质是key-value，但是与memcached不同的是，value的类型得到了扩展
+与sql的比较
+           1、大大减少了查询数量，提高了效率
+           2、redis的API更加人性化，再也不需要构建SQL语句，节省了SQL的解析时间
