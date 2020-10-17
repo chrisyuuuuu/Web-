@@ -1,0 +1,51 @@
+import requests
+from lxml import etree
+import urllib.request
+from shibie import shibie
+import time
+
+# 创建一个会话
+s = requests.Session()
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+}
+
+i = 0
+while 1:
+    # 先发送get请求，获取验证码图片地址，将图片下载到本地
+    get_url = 'https://so.gushiwen.org/user/login.aspx?from=http://so.gushiwen.org/user/collect.aspx'
+    r_get = s.get(url=get_url, headers=headers)
+    tree = etree.HTML(r_get.text)
+    image_src = 'https://so.gushiwen.org' + tree.xpath('//img[@id="imgCode"]/@src')[0]
+    # 获取表单里面两个隐藏框的值
+    views = tree.xpath('//input[@id="__VIEWSTATE"]/@value')[0]
+    viewg = tree.xpath('//input[@id="__VIEWSTATEGENERATOR"]/@value')[0]
+    # 下载验证码图片
+    # urllib.request.urlretrieve(image_src, 'code.png')
+    r_image = s.get(url=image_src, headers=headers)
+    with open('code.png', 'wb') as fp:
+        fp.write(r_image.content)
+    # 让软件自动识别验证码
+    code = shibie('./code.png')
+
+    # 模拟发送post请求
+    post_url = 'https://so.gushiwen.org/user/login.aspx?from=http%3a%2f%2fso.gushiwen.org%2fuser%2fcollect.aspx'
+    formdata = {
+        '__VIEWSTATE': views, 
+        '__VIEWSTATEGENERATOR': viewg, 
+        'from': 'http://so.gushiwen.org/user/collect.aspx', 
+        'email': '1090509990@qq.com', 
+        'pwd': '123456', 
+        'code': code, 
+        'denglu': '登录', 
+    }
+    r_post = s.post(url=post_url, headers=headers, data=formdata)
+
+    i += 1
+    # 如果识别正确，推出循环，识别失败，接着识别
+    if '退出登录' in r_post.text:
+        print('第--%s--次识别成功-😊' % i)
+        break
+    print('第--%s--次识别失败-😭' % i)
+    time.sleep(2)
