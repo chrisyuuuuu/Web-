@@ -1,3 +1,4 @@
+```
 PUT myindex2
 {
   "mappings": {
@@ -68,3 +69,4 @@ GET /myindex2/xxxxxxxxxxxxxxxx/_search
 	}
 # 注意：copy_to 参数，当前字段复制给指定字段，
 # index参数：是否为它创建索引，默认True
+```
