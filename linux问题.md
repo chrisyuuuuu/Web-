@@ -44,3 +44,5 @@
 		当前用户查看命令：whoami
 	使用pip安装时出现pip._vendor.requests.exceptions.HTTPError: 404 Client Error: Not Found for url:的解决方法
 		https://www.kanzhun.com/jiaocheng/500894.html
+8. 安装虚拟环境- sudo virtualenv -p /usr/bin/python2.7 appenv3
+
