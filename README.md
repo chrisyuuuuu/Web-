@@ -13,3 +13,4 @@
 8. [数据加密](https://itsdangerous.palletsprojects.com/en/1.1.x/)
 9. [Elasticsearch官方文档]( https://elasticsearch-py.readthedocs.io/)
 10. [django自定义分页](https://www.cnblogs.com/sss4/p/7082713.html)
+11. [django-1.8 中文文档](https://www.cntofu.com/book/35/2_2_1_Making%20queries.md)
