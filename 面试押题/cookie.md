@@ -1,18 +1,17 @@
-如何判断session过期
+**如何判断session过期**
 	- session不存在则过期
 如何判断cookie过期
-	- 
-当一个请求url的协议、域名、端口三者之间任意一个与当前页面url不同即为跨域
+	- 当一个请求url的协议、域名、端口三者之间任意一个与当前页面url不同即为跨域
 实现
-	  COOKIES
-		客户端会话技术
+**COOKIES**
+	  客户端会话技术
 		数据都存储在客户端
 		特性
 		  不能跨浏览器，不能跨域名，默认请求会携带本站的所有cookie
 		  存储结构key-value,支持过期，过期怎么做的?有一个属性时间，调用的时候看看到么到时间（懒过期）
 		  相对不安全，容易被伪造
-	  session
-		服务端会话技术
+		**session**
+	  服务端会话技术
 		服务端记客户端记不住，数据都存储在服务端
 		session不能脱离cookie存在
 		特性
@@ -22,12 +21,12 @@
 		  支持过期
 		Django中，单台设备处理请求有上限（1w）,存在内存共享困难
 		  将session数据持久化到ORM中
-	  token
-		服务端会话技术
+		token
+	  服务端会话技术
 		自定义的session
 		如果用在常规的Web中，和session就没什么区别
 		主要解决的是不支持cookie的客户端
-  
+
 1. cookie的工作原理是：
 	由服务器产生内容，浏览器收到请求后保存在本地；
 	当浏览器再次访问时，浏览器会自动带上Cookie，这样服务器就能通过Cookie的内容来判断这个是“谁”了
@@ -43,8 +42,9 @@
 			
 		rep.set_cookie(key,value,...)  # 设置普通的cookie
 		rep.set_signed_cookie(key,value,salt='加密盐',...) # 设置加密后的cookie
-		
-		
+	
+	
+	​	
 	### set_cookie() 参数说明:
 		key, 键
 		value='', 值
@@ -54,8 +54,9 @@
 		domain=None, Cookie生效的域名
 		secure=False, https传输
 		httponly=False 只能http协议传输，无法被JavaScript获取（不是绝对，底层抓包可以获取到也可以被覆盖）
-						   
-						   
+	
+	
+	​					   
 	### 删除Cookie
 		def logout(request):
 			rep = redirect("/login/")	#得到HttpResponse对象
@@ -100,35 +101,36 @@
 
 	# 将所有Session失效日期小于当前日期的数据删除
 		request.session.clear_expired()
-
+	
 	# 检查会话session的key在数据库中是否存在
 		request.session.exists("session_key")
-
+	
 	# 删除当前会话的所有Session数据
 		request.session.delete()
 		
 	### Django中默认支持Session，其内部提供了5种类型的Session供开发者使用。
 		#1. 数据库Session
 			SESSION_ENGINE = 'django.contrib.sessions.backends.db'   # 引擎（默认）
-
+	
 		#2. 缓存Session
 			SESSION_ENGINE = 'django.contrib.sessions.backends.cache'  # 引擎
 			SESSION_CACHE_ALIAS = 'default'                            # 使用的缓存别名（默认内存缓存，也可以是memcache），此处别名依赖缓存的设置
-
+	
 		#3. 文件Session
 			SESSION_ENGINE = 'django.contrib.sessions.backends.file'    # 引擎
 			SESSION_FILE_PATH = None                                    # 缓存文件路径，如果为None，则使用tempfile模块获取一个临时地址tempfile.gettempdir() 
-
+	
 		#4. 缓存+数据库
 			SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'        # 引擎
-
+	
 		#5. 加密Cookie Session
 			SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'   # 引擎
-			
-			
-			
-			
-			
+
+
+​			
+​			
+​			
+​			
 		##### 其他公用设置项：
 			SESSION_COOKIE_NAME ＝ "sessionid" # Session的cookie保存在浏览器上时的key，即：sessionid＝随机字符串（默认）
 			SESSION_COOKIE_PATH ＝ "/"            # Session的cookie保存的路径（默认）
@@ -143,7 +145,7 @@
 			request.session.flush() 
 			这用于确保前面的会话数据不可以再次被用户的浏览器访问
 			例如，django.contrib.auth.logout() 函数中就会调用它。
-
+	
 		# 设置会话Session和Cookie的超时时间
 			request.session.set_expiry(value)
 				* 如果value是个整数，session会在些秒数后失效。
