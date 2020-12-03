@@ -7,3 +7,4 @@
 6. [大神wupeiqi](https://www.cnblogs.com/wupeiqi/tag/)
 7. [python 基础](https://github.com/heyxiaohao/Python)
 8. [数据加密](https://itsdangerous.palletsprojects.com/en/1.1.x/)
+9. [DRF中文文档](https://github.com/jianshijiuyou/django-rest-framework-api-guide/)
