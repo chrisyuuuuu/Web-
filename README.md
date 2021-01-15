@@ -8,8 +8,12 @@
 7. [python 基础](https://github.com/heyxiaohao/Python)
 8. [数据加密](https://itsdangerous.palletsprojects.com/en/1.1.x/)
 9. [DRF中文文档](https://github.com/jianshijiuyou/django-rest-framework-api-guide/)
+
 10.[djnago 常用数据库字段参数](https://www.cnblogs.com/laoguiaabb/p/8182906.html)
+
 11.[django models字段属性](https://www.cnblogs.com/zq8421/p/10356259.html)
+
 12.[大神追梦人](https://www.zmrenwu.com/)
+
 13.[django3.3文档](https://www.osgeo.cn/django/topics/forms/index.html)
 
