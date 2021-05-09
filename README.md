@@ -1,5 +1,5 @@
 # 学习地址
-1. [python3-cookbook 3.0.0文档](https://python3-cookbook.readthedocs.io/zh_CN/latest/)
+1. [资料学习](https://github.com/yongxinz/tech-blog)
 
 2. [数据结构与算法动态可视化](https://visualgo.net/zh)
 
