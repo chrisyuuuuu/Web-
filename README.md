@@ -1,5 +1,5 @@
 # 学习地址
-1. [资料学习](https://github.com/yongxinz/tech-blog)
+1. [资料学习](https://github.com/yongxinz/tech-blog),[流畅的python](https://github.com/StdioA/fluent-python-notes)
 
 2. [数据结构与算法动态可视化](https://visualgo.net/zh)
 
